@@ -9,3 +9,4 @@ ssh_group: root
 ssh_selinux_dependency_packages:
   - policycoreutils-python
   - checkpolicy
+sshd_syslog_facility: "AUTHPRIV"
