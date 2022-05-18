@@ -12,7 +12,7 @@
 - name: 'Linux : include tasks to create crypo-vars'
   include_tasks: subtasks/crypto.yml
 
-- name: 'LInux : create revoked_keys and set permissions to root/600'
+- name: 'Linux : create revoked_keys and set permissions to root/600'
   become: true
   template:
     src: 'revoked_keys.j2'

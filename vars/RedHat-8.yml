@@ -5,13 +5,13 @@ sshd_service_name: sshd
 sshd_config_path: /etc/ssh
 ssh_owner: root
 ssh_group: root
-sshd_sftp_group: sftponly
+#sshd_sftp_group: sftponly
 sshd_syslog_facility: "AUTHPRIV"
 #sshd_sftp_log_level: "INFO"
-sshd_sftp_log_facility: "{{ sshd_syslog_facility }}"
+#sshd_sftp_log_facility: "{{ sshd_syslog_facility }}"
 # sshd_sftp_subsystem: "sftp internal-sftp -l INFO -f LOCAL6"
 sshd_sftp_subsystem: "sftp internal-sftp"
-sshd_sftp_forcecommand: "internal-sftp -l {{ sshd_sftp_log_level }} -f {{ sshd_sftp_log_facility }}"
+sshd_sftp_forcecommand: "internal-sftp -l {{ sshd_sftp_log_level | default('INFO') }} -f {{ sshd_sftp_log_facility | default('{{ sshd_syslog_facility }}')}}"
 ssh_selinux_dependency_packages:
   - policycoreutils-python-utils
   - checkpolicy
