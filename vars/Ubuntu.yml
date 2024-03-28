@@ -9,3 +9,4 @@ sshd_sftp_subsystem: "sftp internal-sftp -l INFO -f LOCAL6"
 ssh_selinux_dependency_packages:
   - policycoreutils
   - checkpolicy
+sshd_syslog_facility: "AUTHPRIV"
