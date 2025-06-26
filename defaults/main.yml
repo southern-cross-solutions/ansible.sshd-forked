@@ -139,6 +139,9 @@ ssh_print_debian_banner: false # sshd (Debian OS family only)
 # true to enable sftp configuration
 ssh_sftp_enabled: '{{ sftp_enabled | default(false) }}'
 
+# false to disable sftp only match defirectives
+ssh_sftponly_enabled: true
+
 # false to disable sftp chroot
 ssh_sftp_chroot: '{{ sftp_chroot | default(true) }}'
 

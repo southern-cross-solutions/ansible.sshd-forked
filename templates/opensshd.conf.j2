@@ -243,9 +243,10 @@ RevokedKeys {{ sshd_config_path }}/revoked_keys
 
 Subsystem	{{ sshd_sftp_subsystem }}
 
+{% if ssh_sftponly_enabled -%}
 # These lines must appear at the *end* of sshd_config
-Match Group {{ sshd_sftp_group | default('sftponly') }}
-    ForceCommand {{ sshd_sftp_forcecommand | default('internal-sftp -l INFO -f LOCAL6') }}
+Match Group sftponly
+    ForceCommand internal-sftp -l INFO -f LOCAL6
 {% if ssh_sftp_chroot %}
     ChrootDirectory {{ ssh_sftp_chroot_dir }}
 {% endif %}
@@ -254,6 +255,7 @@ Match Group {{ sshd_sftp_group | default('sftponly') }}
     PasswordAuthentication no
     PermitRootLogin no
     X11Forwarding no
+{% endif %}
 {% endif %}
 
 {% if ssh_server_match_address -%}
