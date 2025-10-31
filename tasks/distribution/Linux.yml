@@ -56,7 +56,7 @@
     awk '$5 >= {{ sshd_moduli_minimum }}' {{ sshd_moduli_file }} > {{ sshd_moduli_file }}.new ;
     [ -r {{ sshd_moduli_file }}.new -a -s {{ sshd_moduli_file }}.new ] && mv {{ sshd_moduli_file }}.new {{ sshd_moduli_file }} || true
   notify: restart linux sshd
-  when: sshd_register_moduli.stdout
+  when: sshd_register_moduli.stdout | bool
 
 - name: 'Linux : Include tasks to setup ca keys and principals'
   include_tasks: subtasks/ca_keys_and_principals.yml
