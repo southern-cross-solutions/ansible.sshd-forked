@@ -239,7 +239,6 @@ RevokedKeys {{ sshd_config_path }}/revoked_keys
 # ===========================
 # Configuration, in case SFTP is used
 # override default of no subsystems
-# Subsystem sftp /opt/app/openssh5/libexec/sftp-server
 
 Subsystem	{{ sshd_sftp_subsystem_override | default(sshd_sftp_subsystem) }}
 
